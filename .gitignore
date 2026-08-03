@@ -1,0 +1,18 @@
+# Docker volumes
+**/data/
+**/db/
+**/database/
+
+# Caddy certificates
+**/caddy_data/
+**/caddy_config/
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp

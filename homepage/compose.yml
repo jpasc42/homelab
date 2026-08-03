@@ -1,0 +1,26 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+
+    expose:
+      - 3000
+
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: home.jpasc.uk,144.217.83.81:3000
+
+    volumes:
+      - ./config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+    group_add:
+      - "986"
+
+    restart: unless-stopped
+    
+    networks:
+      - web
+
+networks:
+  web:
+    external: true

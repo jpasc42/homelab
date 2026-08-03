@@ -1,0 +1,15 @@
+home.jpasc.uk {
+    reverse_proxy homepage:3000
+}
+
+status.jpasc.uk {
+    reverse_proxy uptime-kuma:3001
+}
+
+portainer.jpasc.uk {
+    reverse_proxy https://portainer:9443 {
+        transport http {
+            tls_insecure_skip_verify
+        }
+    }
+}

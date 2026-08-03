@@ -1,0 +1,21 @@
+- Infrastructure:
+    - Portainer:
+        href: https://portainer.jpasc.uk
+        description: Docker Management
+        icon: portainer.png
+        server: my-docker
+        container: portainer
+
+    - Homepage:
+        href: http://home.jpasc.uk
+        description: Dashboard
+        icon: homepage.png
+        server: my-docker
+        container: homepage
+
+    - Uptime Kuma:
+        href: http://status.jpasc.uk
+        description: Monitoring
+        icon: uptime-kuma.png
+        server: my-docker
+        container: uptime-kuma
