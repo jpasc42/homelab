@@ -14,7 +14,12 @@
         icon: uptime-kuma.png
         server: my-docker
         container: uptime-kuma
-
+    - Dozzle:
+        href: https://logs.jpasc.uk
+        description: Docker Logs
+        icon: dozzle.png
+        server: my-docker
+        container: dozzle
 - Utilities:
      - Vaultwarden:
         href: https://vault.jpasc.uk
