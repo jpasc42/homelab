@@ -6,12 +6,7 @@
         server: my-docker
         container: portainer
 
-    - Homepage:
-        href: http://home.jpasc.uk
-        description: Dashboard
-        icon: homepage.png
-        server: my-docker
-        container: homepage
+- Monitoring:
 
     - Uptime Kuma:
         href: http://status.jpasc.uk
@@ -19,3 +14,13 @@
         icon: uptime-kuma.png
         server: my-docker
         container: uptime-kuma
+
+- Utilities:
+     - Vaultwarden:
+        href: https://vault.jpasc.uk
+        description: Password manager
+        icon: vaultwarden.png
+        server: my-docker
+        container: vaultwarden
+     - File Browser:
+

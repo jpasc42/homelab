@@ -2,17 +2,20 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/configs/bookmarks
 
-- Developer:
+- Development:
     - Github:
-        - abbr: GH
+        - icon: github.png
           href: https://github.com/
-
-- Social:
-    - Reddit:
-        - abbr: RE
-          href: https://reddit.com/
-
-- Entertainment:
-    - YouTube:
-        - abbr: YT
-          href: https://youtube.com/
+    - Homelab:
+        - icon: github.png
+          href: https://github.com/jpasc42/homelab/tree/main
+          description: Infrastructure repository
+- External:
+    - Namecheap:
+        - icon: namecheap.png
+          href: https://ap.www.namecheap.com/
+          description: Domain Management
+    - OVH:
+        - icon: ovh.png
+          href: https://manager.eu.ovhcloud.com/#/hub/
+          description: VPS Management

@@ -13,3 +13,7 @@ portainer.jpasc.uk {
         }
     }
 }
+
+vault.jpasc.uk {
+    reverse_proxy vaultwarden:80
+}
