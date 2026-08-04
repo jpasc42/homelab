@@ -21,3 +21,7 @@ vault.jpasc.uk {
 logs.jpasc.uk {
     reverse_proxy dozzle:8080
 }
+
+backup.jpasc.uk {
+    reverse_proxy kopia:51515
+}

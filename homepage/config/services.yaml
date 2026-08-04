@@ -28,4 +28,9 @@
         server: my-docker
         container: vaultwarden
      - File Browser:
-
+     - Kopia:
+        href: https://backup.jpasc.uk
+        description: Backups
+        icon: kopia.png
+        server: my-docker
+        container: kopia

@@ -1,0 +1,42 @@
+services:
+  kopia:
+    image: kopia/kopia:latest
+    container_name: kopia
+    hostname: vps-7248e215
+
+    restart: unless-stopped
+
+    command:
+      - server
+      - start
+      - --disable-csrf-token-checks
+      - --insecure
+      - --address=0.0.0.0:51515
+      - --server-username=${KOPIA_SERVER_USERNAME}
+      - --server-password=${KOPIA_SERVER_PASSWORD}
+
+    env_file:
+      - .env
+
+    environment:
+      KOPIA_PASSWORD: ${KOPIA_PASSWORD}
+      USER: admin
+      TZ: ${TZ}
+
+    volumes:
+      - ./config:/app/config
+      - ./cache:/app/cache
+      - ./logs:/app/logs
+
+      # Data to back up
+      - /home:/data:ro
+
+      # Required for browsing restored snapshots
+      - /tmp:/tmp:shared
+
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
