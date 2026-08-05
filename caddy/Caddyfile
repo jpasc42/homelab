@@ -25,3 +25,7 @@ logs.jpasc.uk {
 backup.jpasc.uk {
     reverse_proxy kopia:51515
 }
+
+prometheus.jpasc.uk {
+    reverse_proxy prometheus:9090
+}
