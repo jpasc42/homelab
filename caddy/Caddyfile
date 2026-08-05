@@ -29,3 +29,7 @@ backup.jpasc.uk {
 prometheus.jpasc.uk {
     reverse_proxy prometheus:9090
 }
+
+grafana.jpasc.uk {
+    reverse_proxy grafana:3000
+}
