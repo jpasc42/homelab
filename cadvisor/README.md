@@ -2,15 +2,26 @@
 
 ## Purpose
 
-Exports Docker container metrics for Prometheus.
-
-## Metrics
-
-- Container CPU
-- Container Memory
-- Container Filesystem
-- Container Network
+Collects Docker container metrics.
 
 ## Access
 
-Port: 8080
+Internal only.
+
+## Docker
+
+Image:
+gcr.io/cadvisor/cadvisor
+
+Container:
+cadvisor
+
+## Dependencies
+
+- Docker
+
+## Notes
+
+Not reverse proxied.
+
+Metrics are collected by Prometheus and visualised in Grafana.

@@ -1,53 +1,26 @@
-# JPASC Homelab
+# JPasc Homelab
 
-A self-hosted Docker environment running on an OVH VPS.
+Production-style self-hosted infrastructure built with Docker.
 
-This repository contains all infrastructure required to deploy and manage my personal server and, eventually, my AI assistant **Duane**.
-
----
-
-## Infrastructure
-
-| Service | Purpose |
-|----------|---------|
-| Caddy | Reverse Proxy & Automatic HTTPS |
-| Homepage | Dashboard |
-| Portainer | Docker Management |
-| Uptime Kuma | Monitoring & Alerts |
-| Fail2Ban | SSH Protection |
-
----
-
-## Domains
-
-| Domain | Service |
-|---------|---------|
-| home.jpasc.uk | Homepage |
-| portainer.jpasc.uk | Portainer |
-| status.jpasc.uk | Uptime Kuma |
-
----
-
-## Stack
-
-- Ubuntu Server
-- Docker
-- Docker Compose
-- Caddy
-- Let's Encrypt
-- GitHub
-- Fail2Ban
+The purpose of this project is to build a reliable, documented and monitored platform that will eventually host **Duane** — my personal AI operating system.
 
 ---
 
 ## Project Structure
 
-```
+```text
 docker/
 ├── caddy/
 ├── homepage/
 ├── portainer/
+├── vaultwarden/
+├── dozzle/
 ├── uptime-kuma/
+├── kopia/
+├── node-exporter/
+├── prometheus/
+├── cadvisor/
+├── grafana/
 └── duane/ (planned)
 ```
 
@@ -55,45 +28,128 @@ docker/
 
 ## Current Status
 
-### ✅ Infrastructure v1.0
+### ✅ Infrastructure v2.0
 
-- Docker configured
-- Reverse proxy configured
+- Docker-based infrastructure
+- Reverse proxy with Caddy
 - Automatic HTTPS
-- Domain configured
+- Domain & DNS configured
 - Internal Docker networking
-- Monitoring
-- Infrastructure stored in Git
+- Monitoring stack
+- Encrypted off-site backups
+- Password management
+- Git version controlled
+- Service documentation
+- Standardised Docker structure
+
+---
+
+## Services
+
+| Service | Purpose |
+|----------|---------|
+| Homepage | Central dashboard |
+| Caddy | Reverse proxy & HTTPS |
+| Portainer | Docker management |
+| Vaultwarden | Password management |
+| Uptime Kuma | Service monitoring |
+| Dozzle | Docker log viewer |
+| Kopia | Encrypted backups |
+| Node Exporter | Host metrics |
+| Prometheus | Metrics collection |
+| cAdvisor | Docker metrics |
+| Grafana | Dashboards & visualisation |
+
+---
+
+## Monitoring Stack
+
+```text
+Node Exporter ─┐
+               │
+cAdvisor ──────┼──► Prometheus ───► Grafana
+```
+
+---
+
+## Development Principles
+
+Every service follows the same structure:
+
+```text
+service/
+├── compose.yml
+├── README.md
+├── .env.example
+└── config/
+```
+
+Principles:
+
+- One Docker Compose file per service
+- Document every service
+- Version control everything
+- Reverse proxy where appropriate
+- Homepage is the central dashboard
+- Keep the stack simple and maintainable
 
 ---
 
 ## Roadmap
 
-### Phase 1
+### Phase 1 — Core Infrastructure ✅
+
 - [x] Docker
 - [x] Homepage
-- [x] Portainer
-- [x] Uptime Kuma
 - [x] Caddy
-- [x] Domain
-- [x] SSL
-- [x] GitHub Repository
-
-### Phase 2
-- [ ] Grafana
-- [ ] Dozzle
-- [ ] Vaultwarden
-- [ ] File Browser
-
-### Phase 3
-- [ ] Duane Dashboard
-- [ ] AI Chat
-- [ ] Calendar Integration
-- [ ] Task Management
-- [ ] Server Automation
+- [x] Portainer
+- [x] Vaultwarden
+- [x] Dozzle
+- [x] Uptime Kuma
+- [x] Kopia
+- [x] Node Exporter
+- [x] Prometheus
+- [x] cAdvisor
+- [x] Grafana
+- [x] GitHub documentation
 
 ---
 
-## Long Term Goal
+### Phase 2 — Automation
 
-Create **Duane**, a personal AI operating system capable of managing my server, projects, notes, calendar, reminders and daily workflow from a single interface.
+- [ ] n8n
+- [ ] PostgreSQL
+- [ ] Telegram integration
+- [ ] Workflow automation
+
+---
+
+### Phase 3 — Duane
+
+- [ ] Duane backend
+- [ ] AI chat
+- [ ] Calendar integration
+- [ ] Task management
+- [ ] Knowledge base
+- [ ] Infrastructure awareness
+- [ ] Server automation
+
+---
+
+## Long-Term Goal
+
+Build **Duane** — a personal AI operating system capable of managing:
+
+- Projects
+- Notes
+- Calendar
+- Tasks
+- Server infrastructure
+- Docker containers
+- Monitoring
+- Automations
+- Daily workflow
+
+The homelab is the platform.
+
+Duane is the product.

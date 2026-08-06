@@ -20,6 +20,11 @@
         icon: dozzle.png
         server: my-docker
         container: dozzle
+    - Grafana:
+        href: https://grafana.jpasc.uk
+        icon: grafana.png
+        description: Monitoring graphs
+        
 - Utilities:
      - Vaultwarden:
         href: https://vault.jpasc.uk

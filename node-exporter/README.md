@@ -2,16 +2,29 @@
 
 ## Purpose
 
-Exports Linux host metrics for Prometheus.
+Exports Linux host metrics to Prometheus.
 
-## Metrics
+## Access
+
+Internal only.
+Port 9000
+
+## Docker
+
+Image:
+prom/node-exporter
+
+Container:
+node-exporter
+
+## Notes
+
+Provides:
 
 - CPU
 - Memory
 - Disk
-- Network
 - Filesystem
+- Network
 
-## Access
-
-Port: 9100
+Metrics are consumed by Prometheus.
