@@ -39,3 +39,10 @@
         icon: kopia.png
         server: my-docker
         container: kopia
+- Automation:
+    - n8n:
+        icon: n8n.png
+        href: https://automation.jpasc.uk
+        description: Workflow automation platform
+        server: my-docker
+        container: n8n

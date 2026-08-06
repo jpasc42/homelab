@@ -117,7 +117,7 @@ Principles:
 
 ### Phase 2 — Automation
 
-- [ ] n8n
+- [x] n8n
 - [ ] PostgreSQL
 - [ ] Telegram integration
 - [ ] Workflow automation
