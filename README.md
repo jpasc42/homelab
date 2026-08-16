@@ -1,154 +1,90 @@
-# JPasc Homelab
+# Duane Homelab
 
-Production-style self-hosted infrastructure built with Docker.
+Duane is a Telegram-facing homelab assistant. The current phase establishes a live `/status` monitoring foundation using Prometheus and n8n.
 
-The purpose of this project is to build a reliable, documented and monitored platform that will eventually host **Duane** — my personal AI operating system.
+## Current status
 
----
+The `/status` command is complete and is running against live infrastructure data. It queries Prometheus through n8n and returns a formatted Telegram status message with:
 
-## Project Structure
+- CPU usage and a per-metric health indicator
+- Memory usage and a per-metric health indicator
+- Disk usage and a per-metric health indicator
+- Host uptime and a per-metric health indicator
+- Docker containers running versus expected count
+- An overall health state (`Healthy`, `Warning`, or `Critical`)
+- A generated issue summary when a metric is unhealthy
 
-```text
-docker/
-├── caddy/
-├── homepage/
-├── portainer/
-├── vaultwarden/
-├── dozzle/
-├── uptime-kuma/
-├── kopia/
-├── node-exporter/
-├── prometheus/
-├── cadvisor/
-├── grafana/
-└── duane/ (planned)
-```
+The normal healthy output reports that all systems are healthy, alongside the live metric values and Docker status.
 
----
-
-## Current Status
-
-### ✅ Infrastructure v2.0
-
-- Docker-based infrastructure
-- Reverse proxy with Caddy
-- Automatic HTTPS
-- Domain & DNS configured
-- Internal Docker networking
-- Monitoring stack
-- Encrypted off-site backups
-- Password management
-- Git version controlled
-- Service documentation
-- Standardised Docker structure
-
----
-
-## Services
-
-| Service | Purpose |
-|----------|---------|
-| Homepage | Central dashboard |
-| Caddy | Reverse proxy & HTTPS |
-| Portainer | Docker management |
-| Vaultwarden | Password management |
-| Uptime Kuma | Service monitoring |
-| Dozzle | Docker log viewer |
-| Kopia | Encrypted backups |
-| Node Exporter | Host metrics |
-| Prometheus | Metrics collection |
-| cAdvisor | Docker metrics |
-| Grafana | Dashboards & visualisation |
-
----
-
-## Monitoring Stack
+## Monitoring architecture
 
 ```text
-Node Exporter ─┐
-               │
-cAdvisor ──────┼──► Prometheus ───► Grafana
+Prometheus (+ exporters/cAdvisor)
+        |
+        v
+     n8n /status workflow
+        |
+        v
+   Telegram /status response
 ```
 
----
+Prometheus is the source of truth for the CPU, memory, disk, uptime, and Docker data. n8n retrieves the metrics, evaluates their health, builds the overall status and issue text, then sends the result through Telegram.
 
-## Development Principles
+## Docker service monitoring
 
-Every service follows the same structure:
+Docker health monitoring now goes beyond a simple container count.
 
-```text
-service/
-├── compose.yml
-├── README.md
-├── .env.example
-└── config/
-```
+Prometheus' `container_last_seen` metric is queried by Docker Compose service label. The n8n workflow compares the services currently returned by Prometheus with the expected service list. A service which is absent from the query result is reported by name.
 
-Principles:
+Current expected services:
 
-- One Docker Compose file per service
-- Document every service
-- Version control everything
-- Reverse proxy where appropriate
-- Homepage is the central dashboard
-- Keep the stack simple and maintainable
+- `kopia`
+- `portainer`
+- `uptime-kuma`
+- `cadvisor`
+- `node-exporter`
+- `dozzle`
+- `prometheus`
+- `vaultwarden`
+- `grafana`
+- `homepage`
+- `caddy`
+- `n8n`
 
----
+When healthy, the workflow reports `12/12` and confirms that all Docker containers are running. If, for example, `kopia` is missing, it reports `11/12` and identifies `kopia` as not running. Multiple missing services are listed individually.
 
-## Roadmap
+The displayed running count is derived from the same missing-service list used for the health result, so the count and diagnostic stay consistent.
 
-### Phase 1 — Core Infrastructure ✅
+## Validation completed
 
-- [x] Docker
-- [x] Homepage
-- [x] Caddy
-- [x] Portainer
-- [x] Vaultwarden
-- [x] Dozzle
-- [x] Uptime Kuma
-- [x] Kopia
-- [x] Node Exporter
-- [x] Prometheus
-- [x] cAdvisor
-- [x] Grafana
-- [x] GitHub documentation
+The workflow's warning and critical health behaviour was tested with simulated metric values, then restored to live Prometheus data.
 
----
+Docker failure identification was also tested safely by temporarily marking `kopia` as missing in the n8n Code node. The test confirmed that the Telegram status can name the missing service. That simulation has been removed; Docker detection is now live and only reports services absent from Prometheus data.
 
-### Phase 2 — Automation
+## Current stack
 
-- [x] n8n
-- [ ] Telegram integration
-- [ ] Workflow automation
+| Service | Current role |
+| --- | --- |
+| Kopia | Backups |
+| Portainer | Container management |
+| Uptime Kuma | Availability monitoring |
+| cAdvisor | Container metrics for Prometheus |
+| Node Exporter | Host metrics for Prometheus |
+| Dozzle | Container log viewing |
+| Prometheus | Metrics collection and query source |
+| Vaultwarden | Password manager |
+| Grafana | Metrics dashboards |
+| Homepage | Homelab dashboard |
+| Caddy | Reverse proxy |
+| n8n | Workflow automation and Telegram command handling |
 
----
+## Next phase
 
-### Phase 3 — Duane
+1. Add proactive monitoring and alerts so Duane sends a Telegram message when a container or monitored metric becomes unhealthy, rather than waiting for `/status`.
+2. Define alert behaviour: thresholds, severity, repeated-alert suppression, and recovery notifications.
+3. Expand Duane beyond monitoring with further Telegram commands and assistant functionality (for example help, reminders, and later AI-backed capabilities).
 
-- [ ] Duane backend
-- [ ] AI chat
-- [ ] Calendar integration
-- [ ] Task management
-- [ ] Knowledge base
-- [ ] Infrastructure awareness
-- [ ] Server automation
+## Scope note
 
----
+This README records completed work only. Proactive alerts and the broader Duane command/assistant features are planned next-phase work, not current functionality.
 
-## Long-Term Goal
-
-Build **Duane** — a personal AI operating system capable of managing:
-
-- Projects
-- Notes
-- Calendar
-- Tasks
-- Server infrastructure
-- Docker containers
-- Monitoring
-- Automations
-- Daily workflow
-
-The homelab is the platform.
-
-Duane is the product.
