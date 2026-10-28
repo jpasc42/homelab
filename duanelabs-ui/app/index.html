@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1420">
+  <title>DuaneLabs</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" aria-label="DuaneLabs home">
+        <span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5v9a1.5 1.5 0 0 1-1.5 1.5H15v-6h-6v6H4.5A1.5 1.5 0 0 1 3 19.5z"/></svg></span>
+        <span>Duane<span class="brand-accent">Labs</span></span>
+      </a>
+      <nav class="nav-list" aria-label="Main navigation">
+        <a class="nav-item active" href="#dashboard" data-page="dashboard"><span class="nav-icon">▦</span><span>Dashboard</span></a>
+        <a class="nav-item" href="#systems" data-page="systems"><span class="nav-icon">⬡</span><span>Systems</span></a>
+        <a class="nav-item" href="#monitoring" data-page="monitoring"><span class="nav-icon">⌕</span><span>Monitoring</span></a>
+        <a class="nav-item" href="#security" data-page="security"><span class="nav-icon">⬟</span><span>Security</span></a>
+        <a class="nav-item" href="#automation" data-page="automation"><span class="nav-icon">⚙</span><span>Automation</span></a>
+        <a class="nav-item" href="#media" data-page="media"><span class="nav-icon">▶</span><span>Media</span></a>
+        <a class="nav-item" href="#tools" data-page="tools"><span class="nav-icon">▣</span><span>Tools</span></a>
+        <a class="nav-item" href="#settings" data-page="settings"><span class="nav-icon">⚙</span><span>Settings</span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="profile-orb">JP</div>
+        <div class="profile-copy"><strong>JPasc Homelab</strong><span>Personal infrastructure</span></div>
+        <span class="more-dots">•••</span>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation">☰</button>
+        <div class="crumb"><span class="crumb-muted">Workspace</span><span class="crumb-slash">/</span><strong id="topbarPage">Dashboard</strong></div>
+        <div class="topbar-right">
+          <span class="connection"><i></i><span>UI online</span></span>
+          <span class="top-divider"></span>
+          <span class="clock-date" id="clockDate">Loading date…</span>
+          <span class="clock-time" id="clockTime">--:--</span>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <section class="page active" id="page-dashboard" data-title="Dashboard">
+          <div class="page-heading">
+            <div><p class="eyebrow">OVERVIEW</p><h1>Good to see you.</h1><p class="page-subtitle">Your personal infrastructure, at a glance.</p></div>
+            <div class="heading-actions"><span class="date-pill" id="todayPill">Today</span><button class="btn btn-secondary" id="refreshBtn"><span>↻</span> Refresh UI</button></div>
+          </div>
+
+          <div class="stat-grid">
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Infrastructure</span><span class="stat-icon blue">⌘</span></div><div class="stat-value">8 <small>services</small></div><div class="stat-foot"><span class="status-dot green"></span>Configured in Homepage</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Monitoring</span><span class="stat-icon violet">⌁</span></div><div class="stat-value">4 <small>tools</small></div><div class="stat-foot">Metrics, uptime &amp; logs</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Automation</span><span class="stat-icon cyan">⟳</span></div><div class="stat-value">n8n <small>workflow engine</small></div><div class="stat-foot">Duane integration planned</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Security</span><span class="stat-icon green">⬟</span></div><div class="stat-value">In progress</div><div class="stat-foot">DuaneShield planned for Raspberry Pi</div></article>
+          </div>
+
+          <div class="content-grid">
+            <section class="panel panel-wide">
+              <div class="panel-heading"><div><h2>Quick access</h2><p>Jump into your most-used services.</p></div><span class="panel-kicker">SHORTCUTS</span></div>
+              <div class="service-grid">
+                <a class="service-card" href="https://portainer.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo portainer">P</span><span class="service-copy"><strong>Portainer</strong><small>Docker management</small></span><span class="external">↗</span></a>
+                <a class="service-card" href="https://grafana.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo grafana">◉</span><span class="service-copy"><strong>Grafana</strong><small>Metrics &amp; dashboards</small></span><span class="external">↗</span></a>
+                <a class="service-card" href="https://automation.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo n8n">n8n</span><span class="service-copy"><strong>n8n</strong><small>Workflow automation</small></span><span class="external">↗</span></a>
+                <a class="service-card" href="http://status.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo uptime">♥</span><span class="service-copy"><strong>Uptime Kuma</strong><small>Service availability</small></span><span class="external">↗</span></a>
+                <a class="service-card" href="https://logs.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo dozzle">≋</span><span class="service-copy"><strong>Dozzle</strong><small>Container logs</small></span><span class="external">↗</span></a>
+                <a class="service-card" href="https://backup.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo kopia">K</span><span class="service-copy"><strong>Kopia</strong><small>Backups</small></span><span class="external">↗</span></a>
+              </div>
+            </section>
+            <section class="panel">
+              <div class="panel-heading"><div><h2>System overview</h2><p>Live metrics will be connected next.</p></div><span class="panel-kicker">VPS</span></div>
+              <div class="metric-placeholder"><div class="metric-ring"><span>—<small>%</small></span></div><div><strong>CPU usage</strong><small>Awaiting Prometheus integration</small></div></div>
+              <div class="metric-placeholder"><div class="metric-ring ring-purple"><span>—<small>%</small></span></div><div><strong>Memory usage</strong><small>Awaiting Prometheus integration</small></div></div>
+              <div class="metric-placeholder"><div class="metric-ring ring-cyan"><span>—<small>%</small></span></div><div><strong>Disk usage</strong><small>Awaiting Prometheus integration</small></div></div>
+              <div class="notice"><span class="notice-icon">i</span><span>Metrics are placeholders until the dashboard is connected to your monitoring stack.</span></div>
+            </section>
+          </div>
+          <section class="panel activity-panel">
+            <div class="panel-heading"><div><h2>Workspace roadmap</h2><p>Planned improvements for DuaneLabs.</p></div><a class="text-link" href="#systems">Explore systems <span>→</span></a></div>
+            <div class="roadmap">
+              <div class="roadmap-item done"><span class="roadmap-check">✓</span><div><strong>Core homelab</strong><small>Docker, reverse proxy and monitoring</small></div><span class="roadmap-status">Existing</span></div>
+              <div class="roadmap-item"><span class="roadmap-number">02</span><div><strong>Live service status</strong><small>Connect health checks and Prometheus metrics</small></div><span class="roadmap-status planned">Next</span></div>
+              <div class="roadmap-item"><span class="roadmap-number">03</span><div><strong>DuaneShield</strong><small>DNS filtering and security monitoring on the Pi</small></div><span class="roadmap-status planned">Planned</span></div>
+            </div>
+          </section>
+        </section>
+
+        <section class="page" id="page-systems" data-title="Systems">
+          <div class="page-heading"><div><p class="eyebrow">INFRASTRUCTURE</p><h1>Systems</h1><p class="page-subtitle">The building blocks behind your homelab.</p></div><span class="page-icon">⬡</span></div>
+          <div class="section-grid">
+            <article class="system-card"><div class="system-card-top"><span class="service-logo portainer">P</span><span class="tag tag-blue">Docker</span></div><h3>VPS</h3><p>Primary host for your containers, reverse proxy and monitoring stack.</p><div class="system-meta"><span>Host</span><strong>vps-7248e215</strong></div><a href="https://portainer.jpasc.uk" target="_blank" rel="noreferrer" class="card-link">Manage containers ↗</a></article>
+            <article class="system-card"><div class="system-card-top"><span class="service-logo caddy">C</span><span class="tag tag-green">Proxy</span></div><h3>Caddy</h3><p>Reverse proxy and HTTPS entry point for your service subdomains.</p><div class="system-meta"><span>Network</span><strong>web</strong></div><a href="https://home.jpasc.uk" target="_blank" rel="noreferrer" class="card-link">Open Homepage ↗</a></article>
+            <article class="system-card planned-card"><div class="system-card-top"><span class="service-logo pi">π</span><span class="tag tag-amber">Coming soon</span></div><h3>Raspberry Pi 4</h3><p>Planned DNS filtering, ad blocking and local network security monitoring.</p><div class="system-meta"><span>Memory</span><strong>1 GB RAM</strong></div><span class="card-link muted-link">DuaneShield · planned</span></article>
+          </div>
+        </section>
+
+        <section class="page" id="page-monitoring" data-title="Monitoring">
+          <div class="page-heading"><div><p class="eyebrow">OBSERVABILITY</p><h1>Monitoring</h1><p class="page-subtitle">Metrics, availability and container logs.</p></div><span class="page-icon">⌁</span></div>
+          <div class="service-list">
+            <a class="list-row" href="https://grafana.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo grafana">◉</span><span class="list-main"><strong>Grafana</strong><small>Dashboards and visualisation</small></span><span class="tag tag-green">Configured</span><span class="row-arrow">↗</span></a>
+            <a class="list-row" href="https://prometheus.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo prometheus">P</span><span class="list-main"><strong>Prometheus</strong><small>Metrics collection and querying</small></span><span class="tag tag-green">Configured</span><span class="row-arrow">↗</span></a>
+            <a class="list-row" href="http://status.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo uptime">♥</span><span class="list-main"><strong>Uptime Kuma</strong><small>Service uptime monitoring</small></span><span class="tag tag-green">Configured</span><span class="row-arrow">↗</span></a>
+            <a class="list-row" href="https://logs.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo dozzle">≋</span><span class="list-main"><strong>Dozzle</strong><small>Docker container logs</small></span><span class="tag tag-green">Configured</span><span class="row-arrow">↗</span></a>
+          </div>
+          <div class="notice page-notice"><span class="notice-icon">i</span><span>“Configured” means listed in your current setup; this page hasn't checked each service's live health yet.</span></div>
+        </section>
+
+        <section class="page" id="page-security" data-title="Security">
+          <div class="page-heading"><div class="heading-with-icon"><span class="big-page-icon">⬟</span><div><p class="eyebrow">PROTECTION</p><h1>Security</h1><p class="page-subtitle">Network protection and home security integrations.</p></div></div><span class="tag tag-amber">Setup in progress</span></div>
+          <div class="security-banner"><div class="security-shield">⬟</div><div><h2>Security centre</h2><p>Your security tools will be gathered here. No cameras or network devices are connected to this UI yet.</p></div></div>
+          <div class="section-grid">
+            <article class="system-card"><div class="system-card-top"><span class="service-logo fail2ban">F</span><span class="tag tag-blue">Existing</span></div><h3>Fail2Ban</h3><p>Host-level protection against repeated authentication failures.</p><div class="system-meta"><span>Integration</span><strong>Not connected</strong></div><span class="card-link muted-link">Connect status later</span></article>
+            <article class="system-card planned-card"><div class="system-card-top"><span class="service-logo pi">π</span><span class="tag tag-amber">Planned</span></div><h3>DuaneShield DNS</h3><p>Pi-hole DNS filtering, ad blocking and malicious-domain lists.</p><div class="system-meta"><span>Device</span><strong>Raspberry Pi 4 · 1 GB</strong></div><span class="card-link muted-link">Awaiting Pi setup</span></article>
+</div>
+<div class="camera-grid">
+<article class="system-card camera-live-card">
+  <div class="system-card-top">
+    <span class="service-logo camera">▣</span>
+    <span class="tag tag-blue">RTSP connected</span>
+  </div>
+  <h3>Backhouse · Tapo C310</h3>
+  <p>Live camera feed delivered through MediaMTX.</p>
+  <div class="camera-player-wrap">
+    <video id="backhouseVideo" controls muted playsinline preload="none"
+      aria-label="Backhouse Tapo C310 live camera feed"></video>
+  </div>
+  <div class="camera-controls">
+    <button class="btn btn-secondary" id="startBackhouseBtn">▶ Start live view</button>
+    <button class="btn btn-secondary" id="stopBackhouseBtn" disabled>■ Stop</button>
+    <span class="camera-status" id="backhouseStatus" role="status" aria-live="polite">Player ready.</span>
+  </div>
+</article>
+
+
+<article class="system-card camera-live-card">
+  <div class="system-card-top">
+    <span class="service-logo camera">▣</span>
+    <span class="tag tag-blue">RTSP connected</span>
+  </div>
+  <h3>Front House · Tapo</h3>
+  <p>Live front entrance camera feed delivered through MediaMTX.</p>
+  <div class="camera-player-wrap">
+    <video id="fronthouseVideo" controls muted playsinline preload="none"
+      aria-label="Front House live camera feed"></video>
+  </div>
+  <div class="camera-controls">
+    <button class="btn btn-secondary" id="startFronthouseBtn">▶ Start live view</button>
+    <button class="btn btn-secondary" id="stopFronthouseBtn" disabled>■ Stop</button>
+    <span class="camera-status" id="fronthouseStatus" role="status" aria-live="polite">Player ready.</span>
+  </div>
+</article>
+</div>
+          <div class="notice page-notice"><span class="notice-icon">!</span><span>For safety, camera streams and credentials must be served through an authenticated integration—not embedded as public stream URLs in frontend code.</span></div>
+        </section>
+
+        <section class="page" id="page-automation" data-title="Automation">
+          <div class="page-heading"><div><p class="eyebrow">WORKFLOWS</p><h1>Automation</h1><p class="page-subtitle">Connect services and make DuaneLabs work for you.</p></div><span class="page-icon">⟳</span></div>
+          <div class="section-grid">
+            <article class="system-card"><div class="system-card-top"><span class="service-logo n8n">n8n</span><span class="tag tag-green">Configured</span></div><h3>n8n</h3><p>Workflow automation for integrations, alerts and service tasks.</p><a class="card-link" href="https://automation.jpasc.uk" target="_blank" rel="noreferrer">Open workflows ↗</a></article>
+            <article class="system-card planned-card"><div class="system-card-top"><span class="service-logo duane">D</span><span class="tag tag-amber">In development</span></div><h3>Duane</h3><p>Your personal assistant for task capture, reminders and homelab operations.</p><div class="system-meta"><span>Integration</span><strong>Not connected</strong></div><span class="card-link muted-link">Connect later</span></article>
+          </div>
+        </section>
+
+        <section class="page" id="page-media" data-title="Media">
+          <div class="page-heading"><div><p class="eyebrow">ENTERTAINMENT</p><h1>Media</h1><p class="page-subtitle">A home for your media services.</p></div><span class="page-icon">▶</span></div>
+          <div class="empty-state"><div class="empty-icon">▶</div><h2>Your media space is ready</h2><p>No media services are configured in the current homelab list. Add services here when you're ready.</p><button class="btn btn-secondary" data-goto="tools">Browse tools instead</button></div>
+        </section>
+
+        <section class="page" id="page-tools" data-title="Tools">
+          <div class="page-heading"><div><p class="eyebrow">UTILITIES</p><h1>Tools</h1><p class="page-subtitle">Handy utilities and administration portals.</p></div><span class="page-icon">▣</span></div>
+          <div class="service-list">
+            <a class="list-row" href="https://portainer.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo portainer">P</span><span class="list-main"><strong>Portainer</strong><small>Docker management</small></span><span class="row-arrow">↗</span></a>
+            <a class="list-row" href="https://vault.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo vault">V</span><span class="list-main"><strong>Vaultwarden</strong><small>Password manager</small></span><span class="row-arrow">↗</span></a>
+            <a class="list-row" href="https://backup.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo kopia">K</span><span class="list-main"><strong>Kopia</strong><small>Backups</small></span><span class="row-arrow">↗</span></a>
+            <a class="list-row" href="https://logs.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo dozzle">≋</span><span class="list-main"><strong>Dozzle</strong><small>Container logs</small></span><span class="row-arrow">↗</span></a>
+          </div>
+        </section>
+
+        <section class="page" id="page-settings" data-title="Settings">
+          <div class="page-heading"><div><p class="eyebrow">PREFERENCES</p><h1>Settings</h1><p class="page-subtitle">Dashboard information and interface preferences.</p></div><span class="page-icon">⚙</span></div>
+          <div class="panel settings-panel"><div class="settings-row"><div><strong>Appearance</strong><small>Dark navy theme with blue accents</small></div><span class="tag tag-green">Active</span></div><div class="settings-row"><div><strong>Data integrations</strong><small>Live metrics and service checks aren't connected yet.</small></div><span class="tag tag-amber">Pending</span></div><div class="settings-row"><div><strong>Version</strong><small>DuaneLabs UI · initial prototype</small></div><span class="tag tag-blue">v0.1</span></div></div>
+        </section>
+
+        <footer class="footer"><span>DuaneLabs <span class="footer-dot">•</span> Personal infrastructure workspace</span><span>Frontend prototype · Live integrations pending</span></footer>
+      </div>
+    </main>
+  </div>
+  <script src="/hls.min.js"></script>
+  <script src="/camera.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

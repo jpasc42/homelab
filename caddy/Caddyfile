@@ -26,14 +26,33 @@ backup.jpasc.uk {
     reverse_proxy kopia:51515
 }
 
-prometheus.jpasc.uk {
-    reverse_proxy prometheus:9090
-}
-
 grafana.jpasc.uk {
     reverse_proxy grafana:3000
 }
 
 automation.jpasc.uk {
     reverse_proxy n8n:5678
+}
+
+labs.jpasc.uk {
+    reverse_proxy duanelabs-ui:80
+}
+
+
+https://labs.jpasc.uk:8443 {
+    handle /backhouse/* {
+        header Access-Control-Allow-Origin "https://labs.jpasc.uk"
+        header Access-Control-Allow-Credentials "true"
+        reverse_proxy mediamtx:8888
+    }
+
+    handle /fronthouse/* {
+        header Access-Control-Allow-Origin "https://labs.jpasc.uk"
+        header Access-Control-Allow-Credentials "true"
+        reverse_proxy mediamtx:8888
+    }
+
+    handle {
+        respond "Not found" 404
+    }
 }

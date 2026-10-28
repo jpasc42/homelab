@@ -16,3 +16,13 @@
 
 # Temporary files
 *.tmp
+
+# Local configuration and secrets
+.env
+.env.*
+
+# Local backups
+*.backup-*
+*.bak
+*.bak-*
+*.pre-camera-*

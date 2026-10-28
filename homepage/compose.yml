@@ -7,7 +7,7 @@ services:
       - 3000
 
     environment:
-      HOMEPAGE_ALLOWED_HOSTS: home.jpasc.uk,144.217.83.81:3000
+      HOMEPAGE_ALLOWED_HOSTS: home.jpasc.uk,home.jpasc.uk:443,144.217.83.81:3000
 
     volumes:
       - ./config:/app/config

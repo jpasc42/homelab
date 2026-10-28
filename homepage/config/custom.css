@@ -1,0 +1,36 @@
+/* DuaneLabs - visual refinements */
+
+:root {
+    color-scheme: dark;
+}
+
+/* Smooth transitions */
+.service-card {
+    transition:
+        transform 160ms ease,
+        border-color 160ms ease,
+        box-shadow 160ms ease;
+}
+
+/* Subtle hover interaction */
+.service-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Improve card readability */
+.service-card {
+    border-radius: 12px;
+}
+
+/* Refined section headings */
+#information-widgets,
+#services {
+    gap: 1rem;
+}
+
+/* Keep the layout comfortable on smaller screens */
+@media (max-width: 768px) {
+    .service-card {
+        border-radius: 10px;
+    }
+}

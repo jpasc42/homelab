@@ -7,42 +7,44 @@
         container: portainer
 
 - Monitoring:
-
     - Uptime Kuma:
         href: http://status.jpasc.uk
-        description: Monitoring
+        description: Service Uptime
         icon: uptime-kuma.png
         server: my-docker
         container: uptime-kuma
+
+    - Grafana:
+        href: https://grafana.jpasc.uk
+        description: Metrics and Dashboards
+        icon: grafana.png
+
     - Dozzle:
         href: https://logs.jpasc.uk
-        description: Docker Logs
+        description: Container Logs
         icon: dozzle.png
         server: my-docker
         container: dozzle
-    - Grafana:
-        href: https://grafana.jpasc.uk
-        icon: grafana.png
-        description: Monitoring graphs
-        
+
 - Utilities:
-     - Vaultwarden:
+    - Vaultwarden:
         href: https://vault.jpasc.uk
-        description: Password manager
+        description: Password Manager
         icon: vaultwarden.png
         server: my-docker
         container: vaultwarden
-     - File Browser:
-     - Kopia:
+
+    - Kopia:
         href: https://backup.jpasc.uk
         description: Backups
         icon: kopia.png
         server: my-docker
         container: kopia
+
 - Automation:
     - n8n:
-        icon: n8n.png
         href: https://automation.jpasc.uk
-        description: Workflow automation platform
+        description: Workflow Automation
+        icon: n8n.png
         server: my-docker
         container: n8n

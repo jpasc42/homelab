@@ -1,0 +1,17 @@
+services:
+  mediamtx:
+    image: bluenviron/mediamtx:latest
+    container_name: mediamtx
+    restart: unless-stopped
+    env_file:
+      - .env
+    expose:
+      - "8554"
+      - "8888"
+      - "8889"
+    networks:
+      - web
+
+networks:
+  web:
+    external: true

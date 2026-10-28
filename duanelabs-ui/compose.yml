@@ -1,0 +1,13 @@
+services:
+  duanelabs-ui:
+    build: .
+    container_name: duanelabs-ui
+    restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
