@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b1420">
+  <meta name="theme-color" content="#100d11">
   <title>DuaneLabs</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
@@ -15,11 +15,10 @@
         <span>Duane<span class="brand-accent">Labs</span></span>
       </a>
       <nav class="nav-list" aria-label="Main navigation">
-        <a class="nav-item active" href="#dashboard" data-page="dashboard"><span class="nav-icon">▦</span><span>Dashboard</span></a>
+        <a class="nav-item active" href="#dashboard" data-page="dashboard"><span class="nav-icon">⌂</span><span>Overview</span></a>
         <a class="nav-item" href="#systems" data-page="systems"><span class="nav-icon">⬡</span><span>Systems</span></a>
         <a class="nav-item" href="#monitoring" data-page="monitoring"><span class="nav-icon">⌕</span><span>Monitoring</span></a>
         <a class="nav-item" href="#security" data-page="security"><span class="nav-icon">⬟</span><span>Security</span></a>
-        <a class="nav-item" href="#automation" data-page="automation"><span class="nav-icon">⚙</span><span>Automation</span></a>
         <a class="nav-item" href="#media" data-page="media"><span class="nav-icon">▶</span><span>Media</span></a>
         <a class="nav-item" href="#tools" data-page="tools"><span class="nav-icon">▣</span><span>Tools</span></a>
         <a class="nav-item" href="#settings" data-page="settings"><span class="nav-icon">⚙</span><span>Settings</span></a>
@@ -34,7 +33,7 @@
     <main class="main-area">
       <header class="topbar">
         <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation">☰</button>
-        <div class="crumb"><span class="crumb-muted">Workspace</span><span class="crumb-slash">/</span><strong id="topbarPage">Dashboard</strong></div>
+        <div class="crumb"><span class="crumb-muted">Workspace</span><span class="crumb-slash">/</span><strong id="topbarPage">Overview</strong></div>
         <div class="topbar-right">
           <span class="connection"><i></i><span>UI online</span></span>
           <span class="top-divider"></span>
@@ -44,45 +43,113 @@
       </header>
 
       <div class="page-content">
-        <section class="page active" id="page-dashboard" data-title="Dashboard">
-          <div class="page-heading">
-            <div><p class="eyebrow">OVERVIEW</p><h1>Good to see you.</h1><p class="page-subtitle">Your personal infrastructure, at a glance.</p></div>
-            <div class="heading-actions"><span class="date-pill" id="todayPill">Today</span><button class="btn btn-secondary" id="refreshBtn"><span>↻</span> Refresh UI</button></div>
+
+        <section class="page active" id="page-dashboard" data-title="Overview">
+          <div class="workspace-heading">
+            <div>
+              <p class="eyebrow">YOUR WORKSPACE</p>
+              <h1>Good evening.</h1>
+              <p class="page-subtitle">A clearer view of what matters.</p>
+            </div>
+            <div class="heading-actions">
+              <span class="date-pill" id="todayPill">Today</span>
+            </div>
           </div>
 
-          <div class="stat-grid">
-            <article class="stat-card"><div class="stat-top"><span class="stat-label">Infrastructure</span><span class="stat-icon blue">⌘</span></div><div class="stat-value">8 <small>services</small></div><div class="stat-foot"><span class="status-dot green"></span>Configured in Homepage</div></article>
-            <article class="stat-card"><div class="stat-top"><span class="stat-label">Monitoring</span><span class="stat-icon violet">⌁</span></div><div class="stat-value">4 <small>tools</small></div><div class="stat-foot">Metrics, uptime &amp; logs</div></article>
-            <article class="stat-card"><div class="stat-top"><span class="stat-label">Automation</span><span class="stat-icon cyan">⟳</span></div><div class="stat-value">n8n <small>workflow engine</small></div><div class="stat-foot">Duane integration planned</div></article>
-            <article class="stat-card"><div class="stat-top"><span class="stat-label">Security</span><span class="stat-icon green">⬟</span></div><div class="stat-value">In progress</div><div class="stat-foot">DuaneShield planned for Raspberry Pi</div></article>
-          </div>
-
-          <div class="content-grid">
-            <section class="panel panel-wide">
-              <div class="panel-heading"><div><h2>Quick access</h2><p>Jump into your most-used services.</p></div><span class="panel-kicker">SHORTCUTS</span></div>
-              <div class="service-grid">
-                <a class="service-card" href="https://portainer.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo portainer">P</span><span class="service-copy"><strong>Portainer</strong><small>Docker management</small></span><span class="external">↗</span></a>
-                <a class="service-card" href="https://grafana.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo grafana">◉</span><span class="service-copy"><strong>Grafana</strong><small>Metrics &amp; dashboards</small></span><span class="external">↗</span></a>
-                <a class="service-card" href="https://automation.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo n8n">n8n</span><span class="service-copy"><strong>n8n</strong><small>Workflow automation</small></span><span class="external">↗</span></a>
-                <a class="service-card" href="http://status.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo uptime">♥</span><span class="service-copy"><strong>Uptime Kuma</strong><small>Service availability</small></span><span class="external">↗</span></a>
-                <a class="service-card" href="https://logs.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo dozzle">≋</span><span class="service-copy"><strong>Dozzle</strong><small>Container logs</small></span><span class="external">↗</span></a>
-                <a class="service-card" href="https://backup.jpasc.uk" target="_blank" rel="noreferrer"><span class="service-logo kopia">K</span><span class="service-copy"><strong>Kopia</strong><small>Backups</small></span><span class="external">↗</span></a>
+          <div class="workspace-grid">
+            <section class="workspace-card focus-card">
+              <div class="workspace-card-heading">
+                <div>
+                  <p class="eyebrow">START HERE</p>
+                  <h2>Today's focus</h2>
+                </div>
+                <span class="subtle-label">DAILY PRIORITIES</span>
               </div>
+              <div class="empty-content">
+                <span class="empty-symbol">✳</span>
+                <div>
+                  <strong>Your priorities will live here.</strong>
+                  <p>Tasks and reminders will appear once Duane is connected.</p>
+                </div>
+              </div>
+              <button class="text-action" type="button" disabled>Task integration coming later <span>↗</span></button>
             </section>
-            <section class="panel">
-              <div class="panel-heading"><div><h2>System overview</h2><p>Live metrics will be connected next.</p></div><span class="panel-kicker">VPS</span></div>
-              <div class="metric-placeholder"><div class="metric-ring"><span>—<small>%</small></span></div><div><strong>CPU usage</strong><small>Awaiting Prometheus integration</small></div></div>
-              <div class="metric-placeholder"><div class="metric-ring ring-purple"><span>—<small>%</small></span></div><div><strong>Memory usage</strong><small>Awaiting Prometheus integration</small></div></div>
-              <div class="metric-placeholder"><div class="metric-ring ring-cyan"><span>—<small>%</small></span></div><div><strong>Disk usage</strong><small>Awaiting Prometheus integration</small></div></div>
-              <div class="notice"><span class="notice-icon">i</span><span>Metrics are placeholders until the dashboard is connected to your monitoring stack.</span></div>
+
+            <section class="workspace-card agenda-card">
+              <div class="workspace-card-heading">
+                <div>
+                  <p class="eyebrow">YOUR DAY</p>
+                  <h2>Calendar</h2>
+                </div>
+                <span class="subtle-label">AGENDA</span>
+              </div>
+              <div class="empty-content">
+                <span class="empty-symbol">◷</span>
+                <div>
+                  <strong>Your schedule, at a glance.</strong>
+                  <p>Google Calendar isn't connected to DuaneLabs yet.</p>
+                </div>
+              </div>
+              <span class="card-footnote">Calendar integration · Planned</span>
+            </section>
+
+            <section class="workspace-card projects-card">
+              <div class="workspace-card-heading">
+                <div>
+                  <p class="eyebrow">IN PROGRESS</p>
+                  <h2>Projects</h2>
+                </div>
+                <span class="subtle-label">YOUR WORK</span>
+              </div>
+              <a class="project-row" href="#systems">
+                <span class="project-mark project-mark-primary">D</span>
+                <span class="project-copy">
+                  <strong>DuaneLabs</strong>
+                  <small>Personal workspace rebuild</small>
+                </span>
+                <span class="project-state">Active</span>
+                <span class="project-arrow">↗</span>
+              </a>
+              <a class="project-row" href="#systems">
+                <span class="project-mark">⌘</span>
+                <span class="project-copy">
+                  <strong>Homelab</strong>
+                  <small>Infrastructure and services</small>
+                </span>
+                <span class="project-state">Ongoing</span>
+                <span class="project-arrow">↗</span>
+              </a>
+            </section>
+
+            <section class="workspace-card capture-card">
+              <div class="workspace-card-heading">
+                <div>
+                  <p class="eyebrow">THINKING SPACE</p>
+                  <h2>Quick capture</h2>
+                </div>
+                <span class="subtle-label">NOTES</span>
+              </div>
+              <div class="capture-placeholder">
+                <span>✎</span>
+                <div>
+                  <strong>Ideas shouldn't get lost.</strong>
+                  <p>A place for quick thoughts, things to remember and the next big idea.</p>
+                </div>
+              </div>
+              <span class="card-footnote">Note capture · Planned</span>
             </section>
           </div>
-          <section class="panel activity-panel">
-            <div class="panel-heading"><div><h2>Workspace roadmap</h2><p>Planned improvements for DuaneLabs.</p></div><a class="text-link" href="#systems">Explore systems <span>→</span></a></div>
-            <div class="roadmap">
-              <div class="roadmap-item done"><span class="roadmap-check">✓</span><div><strong>Core homelab</strong><small>Docker, reverse proxy and monitoring</small></div><span class="roadmap-status">Existing</span></div>
-              <div class="roadmap-item"><span class="roadmap-number">02</span><div><strong>Live service status</strong><small>Connect health checks and Prometheus metrics</small></div><span class="roadmap-status planned">Next</span></div>
-              <div class="roadmap-item"><span class="roadmap-number">03</span><div><strong>DuaneShield</strong><small>DNS filtering and security monitoring on the Pi</small></div><span class="roadmap-status planned">Planned</span></div>
+
+          <section class="infra-strip">
+            <div class="infra-intro">
+              <span class="infra-indicator"></span>
+              <div><strong>Your infrastructure</strong><small>Shortcuts to your existing tools</small></div>
+            </div>
+            <div class="infra-links">
+              <a href="https://grafana.jpasc.uk" target="_blank" rel="noreferrer">Grafana <span>↗</span></a>
+              <a href="https://portainer.jpasc.uk" target="_blank" rel="noreferrer">Portainer <span>↗</span></a>
+              <a href="http://status.jpasc.uk" target="_blank" rel="noreferrer">Uptime Kuma <span>↗</span></a>
+              <a href="https://automation.jpasc.uk" target="_blank" rel="noreferrer">n8n <span>↗</span></a>
             </div>
           </section>
         </section>
