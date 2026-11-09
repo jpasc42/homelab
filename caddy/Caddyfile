@@ -35,6 +35,10 @@ automation.jpasc.uk {
 }
 
 labs.jpasc.uk {
+    basic_auth {
+        jpascow {$DUANELABS_PASSWORD_HASH}
+    }
+
     reverse_proxy duanelabs-ui:80
 }
 
